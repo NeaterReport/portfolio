@@ -1,6 +1,6 @@
 # portfolio
 Portfolio of Neater Report
 
-Inspired by Emelie. Design in Sweden. Made in China.
+Design in Sweden. Inspired by Emelie. Made in China.
 
 This repo consists of R codes inspired by Emelie and is a creative space dedicated to her.
