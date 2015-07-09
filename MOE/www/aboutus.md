@@ -11,6 +11,10 @@ The app calculates the margin of errors for proportion and mean, with or without
 #### Inspiration
 This is one of many shiny apps dedicated to and inspired by **Emelie**. The app is part of the JAEG signature collection of data visualization and reporting. If you like the app, please send your thanks to **Emelie**!
 
+
+
+#### App History
+
 **Version 0.0.1**
 
 * Add sample size estimation for mean

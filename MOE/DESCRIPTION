@@ -1,8 +1,9 @@
 Title: JAEG MoE App!
-Author: Ben and Emelie
-AuthorUrl: www.neaterreport.com
+Author: Emelie & Ben
+AuthorUrl: http://www.neaterreport.com
 License: MIT
-DisplayMode: Showcase
-Tags: graph
+DisplayMode: Normal
+Tags: Margin of Error
 Type: Shiny
-Date: May 29 2015
+Date: July 8 2015
+Version: Version 0.0.1
