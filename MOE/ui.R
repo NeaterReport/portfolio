@@ -15,6 +15,8 @@
 library(dplyr)
 library(ggplot2)
 library(ggthemes)
+require(markdown)
+require(rmarkdown)
 library(scales)
 library(shiny)
 library(shinydashboard)

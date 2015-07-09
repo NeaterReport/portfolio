@@ -14,11 +14,13 @@ library(lubridate)
 library(plyr)
 library(dplyr) # load dplyr last
 library(readr)
-library(RLumShiny) # for the colour picker
+require(markdown)
+require(rmarkdown)
+require(RLumShiny) # for the colour picker
 library(scales)
 library(shiny)
 library(shinydashboard)
-library(sortableR)
+require(sortableR)
 
 # ---- Load Data ----
 

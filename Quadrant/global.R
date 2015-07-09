@@ -30,6 +30,8 @@ library(ggplot2)
 library(ggthemes)
 library(DT)
 library(randomNames) # to generate random names!
+require(markdown)
+require(rmarkdown)
 library(readxl)
 library(shiny)
 library(shinydashboard)
