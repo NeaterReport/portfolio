@@ -1,11 +1,14 @@
-**Design in Sweden. Made in China.**
+## About @('_')@!
 
-**Version 0.0.0.9000**
+**Design in Sweden. Inspired by Emelie. Made in China.**
 
-**June 10 2015**
+#### About the App
 
-This app is an interactive teaching tool of key statistical concepts.
+**Version 0.0.1**
 
-This is one of many shiny apps dedicated to and inspired by **Emelie**. The app is part of the JAEG signature collection of data visualization and reporting. If you like the app, please send your thanks to **Emelie!**.
+This app is an interactive teaching tool of key statistical concepts. The app is made possible thanks to R packages such as `shiny` and `ggplot2`.
 
-The app is made possible thanks to R packages such as `shiny` and `ggplot2`.
+#### Inspiration
+This is one of many shiny apps dedicated to and inspired by **Emelie**. The app is part of the JAEG signature collection of data visualization and reporting. If you like the app, please send your thanks to **Emelie**!
+
+![Gotta luv @('_')@!](www/SnowMonkey.jpg)

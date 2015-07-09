@@ -1,3 +1,10 @@
+# ui for Statistics Corner
+
+# ---- Need More Emelie Solution! JAEG ----
+# To Do:
+#1 Add more statistical module! Need more ingenious teaching tools from Emelie!
+
+# ---- Load library ----
 
 library(shiny)
 library(shinydashboard)
@@ -9,40 +16,54 @@ library(scales)
 library(shinythemes)
 library(MASS)
 
-navbarPage("Statistics Corner",
+navbarPage(title = "Statistics Corner",
           theme = shinytheme("flatly"),
-          tags$head(
-            tags$style(HTML("
-      <link href='http://fonts.googleapis.com/css?family=Dancing+Script' rel='stylesheet' type='text/css'>"))
-          ),
           
   tabPanel("Welcome",
+    # Reference custom css style sheet here, otherwise the first page is blank, strange ...
+    tags$head(
+      tags$style(HTML("<link href='http://fonts.googleapis.com/css?family=Dancing+Script' rel='stylesheet' type='text/css'>"))
+    ),
+    includeCSS("www/styles.css"),
     fluidPage(
-      includeCSS("www/styles.css"),
       wellPanel(
-        h2("Welcome to Statistics Corner"),
+        h2("Welcome to Statistics Corner!"),
          p("Statistics Corner is a shiny app to learn about Statistics. Each concept illustrated is hand picked by @('_')@ and inspired by", 
            strong("Emelie!", 
                   style='font-family: Dancing Script;
                   color: pink;
                   font-size:x-large;'), 
            "We take an interactive approach to understand various key concepts in statistics, such as sampling and correlation."),
-         p("If there is a concept you like to see, pleaes let us know!"),
-         p("If you like the app, please send your thanks to",
-           strong("Emelie!", 
-                  style='font-family: Dancing Script;
+         p("If there is a concept you like to see, please let us know!"),
+        h3("Inspiration"),
+        p("This is one of many shiny apps dedicated to and inspired by",
+          strong("Emelie!", 
+                 style='font-family: Dancing Script;
                   color: pink;
-                  font-size:x-large;'))
-      ))
-    ),
+                  font-size:x-large;'),
+        ". The app is part of the JAEG signature collection of data visualization and reporting. If you like the app, please send your thanks to",
+        strong("Emelie!", 
+               style='font-family: Dancing Script;
+                  color: pink;
+                  font-size:x-large;')),
+        # Gotta luv @('_')@!
+        p(img(src="SnowMonkey.jpg"))
+      ) # wellPanel
+    ) # fluidPage
+    ), # tabPanel "Welcome"
   
-  # Apparantly, navbarMenu cannot be first item ...         
-  navbarMenu("Correlation",
-  tabPanel("Scatterplot",
-    headerPanel(
-      h2("Lets Correlate!")
-    ),
+  # Apparantly, navbarMenu cannot be first item ...     
+
+# ---- NavBar Menu ----
+  navbarMenu(title = "Correlation",
+    tabPanel(title = "Scatterplot",
+      headerPanel(
+        h2("Lets Correlate!")
+      ),
+      
     sidebarLayout(
+      
+# ---- Sidebar Panel ----
       sidebarPanel(
         actionButton("plot_button", " Plot Me!", icon = icon("circle-thin"), 
                      style='color: pink;
@@ -59,6 +80,7 @@ navbarPage("Statistics Corner",
         numericInput("ysd", "SD of y", value = 1, min = 0),
         br(),br(),
         
+        # Add selector for graph style from ggthemes
         selectInput("graphstyle", label = "Roll your style!",
                     choices = c("Classic" = 1,
                                 "Economist" = 2,
@@ -68,18 +90,20 @@ navbarPage("Statistics Corner",
                                 "Stata" = 6,
                                 "Tufte" = 7),
                     selected = 5)
-      ),
+      ), # sidebarPane
+
+# ---- Main Panel ----
     mainPanel(
       h2("Scatter Plot"),
       plotOutput("plot_corr"),
       br(),br(),
       
       dataTableOutput("datatable")
-      )
-    )
-  ),
+      ) # mainPanel
+    ) # sidebarLayout
+  ), # tabPanel "Scatterplot"
   
-  tabPanel("Strength of Association",
+  tabPanel(title = "Strength of Association",
            headerPanel(
              h2("Correlation of Various Magnitudes")
            ),
@@ -89,6 +113,7 @@ navbarPage("Statistics Corner",
         actionButton("button_draw", " Draw Me!", icon = icon("eye"), 
                    style='color: pink;
                      background-color: darkblue;')),
+      
       fluidRow(
         box(solidHeader = TRUE, width=4,
             h5("Weak Positive Correlation", align="center"), 
@@ -103,6 +128,7 @@ navbarPage("Statistics Corner",
             p(verbatimTextOutput("r3")),
             plotOutput("strongplot_pos"))
       ),
+      
       fluidRow(
         box(solidHeader = TRUE, width=4,
             h5("Weak Negative Correlation", align="center"),
@@ -117,11 +143,12 @@ navbarPage("Statistics Corner",
             p(verbatimTextOutput("r6")),
             plotOutput("strongplot_neg"))
       )
-    )
-  )),
+    ) # fluidPage
+  ) # tabPanel "Scatterplot"
+), # navbarMenu
   
-  tabPanel("Sampling",
-    h2("Lets Sample"),
+  tabPanel(title = "Sampling",
+    h2("Lets Sample!"),
     sidebarLayout(
       sidebarPanel(
         sliderInput("n_s", label="Sample Size",
@@ -130,6 +157,8 @@ navbarPage("Statistics Corner",
         numericInput("mean_s", "Mean", value = 0, min = 0),
         numericInput("sd_s", "SD", value = 1, min = 0),
         br(),
+        
+        # Add selector for graph style from ggthemes
         selectInput("graphstyle2", label = "Roll your style!",
                     choices = c("Classic" = 1,
                                 "Economist" = 2,
@@ -140,10 +169,11 @@ navbarPage("Statistics Corner",
                                 "Tufte" = 7
                                 ),
                     selected = 5)
-      ),
+      ), # sidebarPanel
       mainPanel(
         plotOutput("plot_sample")
-    )
-  )),
-  tabPanel("Under Construction")
-)
+      ) # mainPanel
+    ) # sidebarLayout
+  ) # tabPanel "Sampling"
+
+) # navbarPage
