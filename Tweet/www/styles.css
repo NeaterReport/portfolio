@@ -1,0 +1,16 @@
+/* css styling to include image on the same line as the header */
+
+.header img {
+  float: left;
+  width: auto;
+  height: 40px;
+  background: #555;
+}
+
+.header h1 {
+  float: left;
+  position: relative;
+  top: 18px;
+  left: 10px;
+  padding: 0 0 0 100px;
+}
