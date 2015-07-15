@@ -9,6 +9,9 @@ function(input, output) {
   
   # Summarize the data by the selected variable and state
   datasetInput <- reactive({
+    # Add a progress message
+    withProgress({
+      setProgress(message = "Processing data")
     subdata <- plyr::ddply(lostAnimal, c("State", input$var), plyr::summarise, count=length(State) ,.drop=FALSE) # call the plyr summarize fn using ::
     subdata <- subdata %>% filter(State == input$state) %>%
       mutate(rank = rank(-count)) %>%
@@ -24,6 +27,7 @@ function(input, output) {
       subdata[,input$var] <- reorder(subdata[,input$var], subdata[,"count"]) # reorder by count
     }
     return(subdata)
+    })
   })
   
 # -----  Create data table -----
@@ -41,6 +45,10 @@ function(input, output) {
 # -----  Make bar graph in ggplot2 -----
   
   output$plot_sg <- renderPlot({
+    
+    # Add a progress message
+    withProgress({
+      setProgress(message = "Making a Plot")
     mycolour <- ifelse(is.null(input$colourid), "ffffff", input$colourid) # assign user picked colour
     gg <- ggplot(head(datasetInput(), 10), 
                  aes_string(x = input$var, y = "count")) + 
@@ -70,6 +78,7 @@ function(input, output) {
     else if (input$graphstyle == 7) {gg + theme_fivethirtyeight() + 
         scale_fill_tableau("colorblind10")}
     else if (input$graphstyle == 8) {gg + theme_tufte()}
+    })
   })
   
 #----  Make multi-group bar graph in ggplot2 ----
@@ -82,7 +91,9 @@ function(input, output) {
   })
   
   output$plot_mg <- renderPlot({
-    
+    # Add a progress message
+    withProgress({
+      setProgress(message = "Making a Plot")
     # Aggregate the data differently if facet
     if (input$varfacet != "") {
       data_mg <- plyr::ddply(lostAnimal, c(input$varx, input$varfill, input$varfacet), plyr::summarise, count=length(State), .drop=FALSE) %>%
@@ -108,6 +119,7 @@ function(input, output) {
     # Use as.formula so that it will work with string var input
     if (input$varfacet!="") {gg <- gg + facet_grid(as.formula(paste(input$varfacet,"~.")))}
     
+    
     # Branch to choose graph style
     if(input$graphstyle == 1) {gg + theme_classic()}
     else if (input$graphstyle == 2) {gg + theme_economist() + scale_fill_economist()}
@@ -120,6 +132,7 @@ function(input, output) {
     else if (input$graphstyle == 7) {gg + theme_fivethirtyeight() + 
         scale_fill_tableau("colorblind10") + theme(strip.background = element_rect(fill="#FFBC79"))}
     else if (input$graphstyle == 8) {gg + theme_tufte()}
+    })
   }, height = plotheight) # adjust plot height using the reactive fn defined earlier
   
 }

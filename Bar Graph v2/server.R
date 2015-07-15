@@ -10,17 +10,30 @@ library(ggthemes)
 library(readr)
 library(scales)
 library(shiny)
+library(shinydashboard)
+library(rmarkdown)
 
 # ---- Import data ----
 
 # Import the cleaned lost and found animals data from the City of Vancouver
-lostAnimal <- read_csv("www/VancouverLostAnimals.csv")
+lostAnimal <- read_csv("www/LostAnimals.csv")
+ 
+lostAnimal <- lostAnimal %>% mutate(Year = factor(Year),
+                                     Month = factor(Month))
 
+# Create a reduced subset for 2011 to 2014 (only run once)
+# lostAnimal <- read_csv("www/VancouverLostAnimals.csv")
+# 
 # Create date variables
-lostAnimal <- lostAnimal %>% mutate(Year = factor(year(Date)),
-                                    Month = factor(month(Date)),
-                                    Day = day(Date),
-                                    Wday = wday(Date, label=TRUE))
+# lostAnimal <- lostAnimal %>% 
+#               mutate(Year = factor(year(Date)),
+#                                     Month = factor(month(Date)),
+#                                     Day = day(Date),
+#                                     Wday = wday(Date, label=TRUE))
+# 
+# filter(Date >=  as.Date("2011-01-01"), Date < as.Date("2015-01-01")) %>%
+# 
+# write.csv(lostAnimal, "www/LostAnimals.csv")
 
 function(input, output) {
  
@@ -55,7 +68,7 @@ function(input, output) {
 # -----  Create data table -----
   
   # Only show the top 10
-  output$selectdata <- renderDataTable(head(datasetInput(), 10), 
+  output$selectdata <- DT::renderDataTable(head(datasetInput(), 10), 
                                        options = list(searching = FALSE, paging = FALSE))
   
 # -----  Make bar graph in ggplot2 -----
@@ -67,7 +80,7 @@ function(input, output) {
       setProgress(message = "Making a Plot")
       
       mycolour <- ifelse(is.null(input$colour), "grey60", input$colour)# assign user picked co
-      
+
       gg <- ggplot(head(datasetInput(), 10), 
                    aes_string(x = input$var, y = "count")) + 
         geom_bar(stat="identity", fill = mycolour) +
@@ -100,7 +113,7 @@ function(input, output) {
     })
   })
   
-  #----  Make multi-group bar graph in ggplot2 ----
+#   #----  Make multi-group bar graph in ggplot2 ----
   
   # see https://groups.google.com/forum/#!topic/shiny-discuss/Fgpd0LoZ-y8
   # Adjust plot height using reactive fn

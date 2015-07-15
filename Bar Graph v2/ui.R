@@ -7,6 +7,7 @@
 # ---- Load some packages here ---
 
 library(shinydashboard)
+library(shiny)
 library(shinyjs)
 library(rmarkdown)
 
@@ -84,7 +85,7 @@ dashboardPage(skin="purple",
                                                  "Matched",
                                                  "Lost",
                                                  "Unknown"),
-                                     selected = "Found"
+                                     selected = "Matched"
                          )
                   ),
                   column(4,

@@ -14,18 +14,18 @@ library(lubridate)
 library(plyr)
 library(dplyr) # load dplyr last
 library(readr)
-require(markdown)
-require(rmarkdown)
-require(RLumShiny) # for the colour picker
+library(markdown)
+library(rmarkdown)
+library(RLumShiny) # for the colour picker
 library(scales)
 library(shiny)
 library(shinydashboard)
-require(sortableR)
+library(sortableR)
 
 # ---- Load Data ----
 
 # Import the cleaned lost and found animals data from the City of Vancouver
-lostAnimal <- read_csv("./www/VancouverLostAnimals.csv")
+lostAnimal <- read_csv("www/VancouverLostAnimals.csv")
 
 # Create date variables
 lostAnimal <- lostAnimal %>% mutate(Year = factor(year(Date)),
