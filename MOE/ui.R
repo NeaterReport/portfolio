@@ -25,7 +25,7 @@ dashboardPage(skin="purple",
 
 # ---- Dashboard Header ----             
   dashboardHeader(title = "JAEG MoE",
-                              
+                  
     # Notification and Batches
     dropdownMenu(type = "tasks", badgeStatus = "primary",
                  taskItem(value = 100, color = "green", "To be Awesome! :)")
@@ -35,6 +35,9 @@ dashboardPage(skin="purple",
 # ---- Dashboard Side Bar ----
   dashboardSidebar(
                 
+    # Google Analytics Script
+    tags$head(includeScript("www/google-analytics.js")),
+    
     # Customize title
     h4(textInput("caption", "Name Your App", "My Awesome Error!"), align="center"),
     
