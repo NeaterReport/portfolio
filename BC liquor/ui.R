@@ -16,6 +16,9 @@ dashboardPage(
 # ---- Dashboard Sidebar ----
   dashboardSidebar(
     
+    # Google Analytics Script
+    tags$head(includeScript("www/google-analytics.js")),
+    
     # Show current date            
     h3(textOutput("currentDate"), align="center"),
     
