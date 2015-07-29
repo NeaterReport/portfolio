@@ -1,6 +1,6 @@
 # ui for JAEG BC Liquor
 
-dashboardPage(
+dashboardPage(skin = "purple",
 
 # ---- Dashboard Header ----
   dashboardHeader(title = "Wine and Beer",
@@ -18,6 +18,11 @@ dashboardPage(
     
     # Google Analytics Script
     tags$head(includeScript("www/google-analytics.js")),
+    
+    # Call the Sortable javascript library on CDN
+    # This next line add Sortable.min.js to make sortableR works on server :) Thanks to Andy Kipp
+    # see https://groups.google.com/forum/#!topic/shiny-discuss/afbtbhRoofE
+    tags$head(tags$script(src="//cdnjs.cloudflare.com/ajax/libs/Sortable/1.2.1/Sortable.min.js")),
     
     # Show current date            
     h3(textOutput("currentDate"), align="center"),
