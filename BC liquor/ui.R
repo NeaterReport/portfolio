@@ -16,6 +16,9 @@ dashboardPage(skin = "purple",
 # ---- Dashboard Sidebar ----
   dashboardSidebar(
     
+    # Add JQuery CDN
+    tags$head(tags$script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js')),
+    
     # Google Analytics Script
     tags$head(includeScript("www/google-analytics.js")),
     
