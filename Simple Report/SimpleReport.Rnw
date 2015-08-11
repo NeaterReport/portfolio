@@ -1,5 +1,5 @@
 % Inspired by Emelie!
-% July 27 2015
+% Aug 10 2015
 
 \documentclass[10pt]{article}
 
@@ -13,6 +13,7 @@
 \usepackage{float} % Taming the unruly figures
 \usepackage{amssymb} % For squares and other math symbols
 \usepackage{multicol} % Add multicols
+\usepackage{hyperref} % Add hyperlink
 
 % Set page margin, adapted from Emelie CLBC styling, so stylish :)
 \oddsidemargin -10pt
@@ -34,8 +35,8 @@
 % Head and Feet
 \pagestyle{fancy}
 \fancyhf{} % clear all header and footer fields
-\fancyhead[CO]{Design in Sweden. Inspired by Emelie. Made in China.}
-\fancyfoot[C]{For Your Eyes Only \thepage}
+\fancyhead[CO]{Cleaner. Cooler. Complex Reporting Made Simple.}
+\fancyfoot[C]{\small{Design in Sweden. Inspired by Emelie. Made in China. } \thepage}
 \renewcommand{\headrulewidth}{0pt} % no line in the header
 \renewcommand{\footrulewidth}{0.1pt}
 
@@ -195,7 +196,7 @@ Icountry <- inline_num[,"country"]
 \subsection*{\color{TealBlue}See what Neater can Do!}
 
 This is a simple \textit{Neater Report}. At \textbf{\textcolor{TealBlue}{\Sexpr{sprintf("%3.0f",Inum)}}} 
-mobile phones per 100 people, \textbf{\textcolor{TealBlue}{\Sexpr{Icountry}}} has the highest number of cell subscription per 100 people (see Figure \ref{fig:graph1}). With \LaTeX{}, we can typeset your report and style it precisely the way you want it and make it \textbf{\textcolor{TealBlue}{visual}}.
+mobile phones per 100 people, \textbf{\textcolor{TealBlue}{\Sexpr{Icountry}}} has the highest number of mobile subscription per 100 people in the world (see Figure \ref{fig:graph1}). With \LaTeX{}, we can typeset your report and style it precisely the way you want it and make it \textbf{\textcolor{TealBlue}{visual}}.
 
 % column break
 \vfill
@@ -216,7 +217,7 @@ Like any reports, we can include:
 
   
 \begin{figure}[H]
-\caption{\textcolor{TealBlue}{Elegant Chart Inspired by Emelie!}}
+\caption{\textcolor{TealBlue}{Mobile Subscription (per 100 People) by Top 10 Countries and Rise Over Time by Country Income Grouping}}
 \label{fig:graph1}
 <<graph_barLine, echo = FALSE, warning = FALSE, fig.height = 4>>=
 
@@ -277,7 +278,7 @@ grid.arrange(bar, line, nrow = 1)
 \newpage
 
 \begin{table}
-\caption {\textcolor{TealBlue}{Mobile Subscription per 100 People by Country Income Grouping in 2013}}
+\caption {\textcolor{TealBlue}{Mobile Subscription (per 100 People) and Percentage of Urban Population by Country Income Grouping in 2013}}
 \label{tab:title} 
 \begin{center}
 <<table, echo = FALSE>>=
@@ -290,11 +291,11 @@ kable(table_data[c(1,3,4,5)], row.names=FALSE, booktabs=TRUE, digits = 1)
 \end{table}
 
 \begin{center}
-\subsection*{Special thanks to \textcolor{Lavender}{Emelie}!}
+\subsection*{Data Source: \href{http://data.worldbank.org/indicator}{World Bank World Development Indicators}}}
 \end{center}
 
 \begin{figure}[H]
-\caption{\textcolor{TealBlue}{Another Elegant Chart Inspired by Emelie!}}
+\caption{\textcolor{TealBlue}{Relationship between Mobile Subscription (per 100 People) and Percentage of Urban Population by Country Income Grouping}}
 
 <<facetgraph, echo = FALSE, warning = FALSE, fig.height = 6>>=
 

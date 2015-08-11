@@ -1,5 +1,5 @@
 % Inspired by Emelie!
-% August 3 2015
+% August 10 2015
 
 \documentclass[10pt]{article} % if landscape here, this only change the page content orientation ...
 
@@ -222,7 +222,7 @@ grid.arrange(donut1, donut2, donut3, nrow=1)
 \begin{minipage}[c]{0.5\textwidth}
 \begin{adjustwidth}{1.5em}{0em} % adjust left and right margin
 \large{\textbf{\textcolor{green!80!yellow!50}{Did you know?}} At \textbf{\textcolor{TealBlue!80!yellow!50}{\Sexpr{sprintf("%3.1f",Inum/100)}}} 
-mobile phones per person, \textbf{\textcolor{TealBlue!80!yellow!50}{\Sexpr{Icountry}}} has the highest number of cell subscription density in the world?}
+mobile phones per person, \textbf{\textcolor{TealBlue!80!yellow!50}{\Sexpr{Icountry}}} has the highest mobile subscription density in the world?}
 \end{adjustwidth}
 \end{minipage}
 % This is just a trick to extend the grey bar, need more Emelie Solution!
@@ -236,7 +236,7 @@ mobile phones per person, \textbf{\textcolor{TealBlue!80!yellow!50}{\Sexpr{Icoun
 % Middle row via minipage
 \begin{minipage}[t]{.6\textwidth}
 \begin{figure}[H]
-\caption*{\textcolor{green!80!yellow!50}{Elegant Charts Inspired by Emelie!}}
+\caption*{\textcolor{green!80!yellow!50}{The Rise of Mobile Subscription!}}
 % \captionsetup[figure]{labelformat=empty}
 <<graph_barLine, echo = FALSE, warning = FALSE, fig.height = 4.2>>=
 
@@ -305,13 +305,13 @@ table_data <- filter(wdi_cdata , country.income == "Aggregates" & Year == 2013 &
 #kable(table_data[c(1,3,4,5)], row.names=FALSE, booktabs=TRUE, digits = 1)
 
 axTable <- xtable(table_data[c(1,3,4,5)], digits = c(0,0,0,1,1),
-       align = "lbc{1.5cm}c{1.5cm}c{2cm}", caption = "\\textcolor{green!80!yellow!50}{Pretty Table inspired by Emelie!}")
+       align = "lbc{1.5cm}c{1.5cm}c{2cm}", caption = "\\textcolor{green!80!yellow!50}{Mobile Subscription and Urban Population}")
 print(axTable, include.rownames=FALSE, size = 'footnotesize', table.placement="H",
       caption.placement = getOption("xtable.caption.placement", "top"),
        add.to.row = list(pos = as.list(-1), command = "\\rowcolor{newBlue}")) # color header
 @
 }
-\tiny{Data Source: \href{http://data.worldbank.org/indicator}{World Bank World Development Indicator}}
+\tiny{Data Source: \href{http://data.worldbank.org/indicator}{World Bank World Development Indicators}}
 \end{minipage}
 \hspace{.5cm} % adjust horizontal page bewteen minis!
 \begin{minipage}[c]{0.3\textwidth}
